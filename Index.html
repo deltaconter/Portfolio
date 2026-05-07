@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Holsen-sama - Portfolio développeur Front-End & Créateur digital. Domination du game par le code.">
+    <meta name="keywords" content="développeur, front-end, portfolio, react, UI/UX, Holsen-sama, TikTok">
+    <meta property="og:title" content="Holsen-sama | Portfolio Domination">
+    <meta property="og:description" content="Je ne code pas pour suivre, je code pour dominer.">
+    <meta property="og:type" content="website">
+    <title>HOLSEN-SAMA | Portfolio Ultime</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;500;700&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- CURSEUR ULTIME -->
+    <div class="cursor-main" id="cursorMain"></div>
+    <div class="cursor-trail" id="cursorTrail"></div>
+
+    <!-- CANVAS PARTICULES -->
+    <canvas id="particles-canvas"></canvas>
+
+    <!-- AUDIO VISUALIZER -->
+    <div class="audio-visualizer" id="audioVisualizer"></div>
+
+    <!-- INTRO OVERLAY -->
+    <div id="intro-overlay">
+        <p class="intro-glitch">"Ils disent que je suis juste un développeur…<br>Ils n'ont rien compris."</p>
+        <button class="enter-btn" id="enterBtn">Entrer dans mon univers</button>
+        <span class="intro-skip" id="introSkip">[SKIP Fait Par Holsen Bika]</span>
+    </div>
+
+    <!-- CV PREVIEW -->
+    <div class="cv-preview-overlay" id="cvPreview">
+        <div class="cv-preview-box">
+            <button class="cv-close" id="cvClose">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+                </svg>
+            </button>
+            <h2>Curriculum Vitæ</h2>
+            <p>Visualise Mon CV, télécharge-le ou ouvre-le dans une nouvelle fenêtre.</p>
+            <object data="Holsen-Sama-CV.pdf" type="application/pdf" class="cv-object">
+                <p>Le preview PDF n'est pas disponible ici. <a href="Holsen-Sama-CV.pdf" target="_blank">Ouvre le CV</a>.</p>
+            </object>
+            <a href="Holsen-Sama-CV.pdf" download class="btn btn-primary">Télécharger le CV</a>
+        </div>
+    </div>
+
+    <!-- WIDGET CONTACT FLOTTANT -->
+    <div class="floating-contact" id="floatingContact">
+        <button class="floating-toggle" id="floatingToggle">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+            </svg>
+        </button>
+        <div class="floating-menu" id="floatingMenu">
+            <a href="mailto:holsendbika@gmail.com" class="floating-link" title="Email">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                </svg>
+            </a>
+            <a href="https://facebook.com/holsen_sama" target="_blank" class="floating-link" title="Facebook">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                </svg>
+            </a>
+            <a href="https://t.me/holsen_sama" target="_blank" class="floating-link" title="Telegram">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+                </svg>
+            </a>
+            <a href="https://wa.me/243896643725" target="_blank" class="floating-link" title="WhatsApp">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+                </svg>
+            </a>
+        </div>
+    </div>
+
+    <!-- NAVBAR -->
+    <nav class="navbar" id="navbar">
+        <div class="logo">HOL-DEV</div>
+            <div class="nav-links">
+                <a href="#who" class="nav-link" data-lang-fr="Qui suis-je" data-lang-en="Who am I">Qui suis-je</a>
+                <a href="#skills" class="nav-link" data-lang-fr="Compétences" data-lang-en="Skills">Compétences</a>
+                <a href="#projects" class="nav-link" data-lang-fr="Armes" data-lang-en="Weapons">Armes</a>
+                <a href="#cases" class="nav-link" data-lang-fr="Études" data-lang-en="Cases">Études</a>
+                <a href="#blog" class="nav-link" data-lang-fr="Blog" data-lang-en="Blog">Blog</a>
+                <a href="#tools" class="nav-link" data-lang-fr="Outils" data-lang-en="Tools">Outils</a>
+                <a href="#tiktok" class="nav-link" data-lang-fr="Création" data-lang-en="Creation">Création</a>
+                <a href="#contact" class="nav-link" data-lang-fr="Invoquer" data-lang-en="Summon">Invoquer</a>
+            </div>
+        <div class="nav-actions">
+
+            <div class="nav-socials">
+                <a href="mailto:holsendbika@gmail.com" title="Email" class="nav-social">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                    </svg>
+                </a>
+                <a href="https://facebook.com/holsen_sama" target="_blank" title="Facebook" class="nav-social">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                    </svg>
+                </a>
+                <a href="https://t.me/holsen_sama" target="_blank" title="Telegram" class="nav-social">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+                    </svg>
+                </a>
+                <a href="https://wa.me/243896643725" target="_blank" title="WhatsApp" class="nav-social">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+                    </svg>
+                </a>
+            </div>
+            <button class="lang-btn" id="langToggle">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="margin-right: 0.3rem;">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                </svg>
+                FR/EN
+            </button>
+            <button class="theme-btn" id="themeToggle">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="margin-right: 0.3rem;">
+                    <path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"/>
+                </svg>
+                Thème
+            </button>
+        </div>
+    </nav>
+
+    <main class="main-container">
+        <!-- HERO -->
+        <section class="hero">
+            <div class="hero-badge">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="margin-right: 0.3rem;">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                </svg>
+                PORTFOLIO 2026
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="margin-left: 0.3rem;">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                </svg>
+            </div>
+            <h1 class="hero-title">
+                Je ne <span class="highlight">code</span> pas pour suivre.<br>
+                Je code pour <span class="highlight">dominer</span>.
+            </h1>
+            <p class="hero-subtitle" data-lang-fr="Développeur Front-End • Architecte d'expériences • Créateur Holsen-sama"
+            data-lang-en="Front-End Developer • Experience Architect • Holsen-sama Creator">
+            Développeur Front-End/back-End • Architecte d'expériences • Créateur Holsen-Bika
+        </p>
+        <div class="cta-group">
+            <a href="#projects" class="btn btn-primary" data-lang-fr="Voir mes armes" data-lang-en="See my weapons">Voir mes armes</a>
+            <a href="#contact" class="btn btn-outline" data-lang-fr="M'invoquer" data-lang-en="Summon me">M'invoquer</a>
+            <button class="btn btn-outline" id="cvToggle">Télécharger CV</button>
+        </div>
+    </section>
+
+    <!-- QUI SUIS-JE + ANDROID -->
+    <section class="section" id="who">
+        <div class="section-header">
+            <p class="section-label" data-lang-fr="IDENTITÉ" data-lang-en="IDENTITY">IDENTITÉ</p>
+            <h2 class="section-title">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor" style="margin-right: 0.5rem;">
+                    <path d="M7 2v11h3v9l7-12h-4l4-8z"/>
+                </svg>
+                Qui suis-je ?
+            </h2>
+        </div>
+        <div class="who-wrapper">
+            <div style="display:flex;flex-direction:column;align-items:center;">
+                <div class="android-full-container" id="androidBot" title="Clique-moi !">
+                    <div class="android-aura"></div>
+                    <div class="android-bubble" id="androidBubble">Salut, je suis K0D4-X !</div>
+                    <div class="android-head">
+                        <div class="android-antenna"></div>
+                        <div class="android-face">
+                            <div class="android-eyes">
+                                <div class="android-eye"></div>
+                                <div class="android-eye"></div>
+                            </div>
+                            <div class="android-mouth"></div>
+                            <div class="android-screen" id="androidScreen">AWAKE</div>
+                        </div>
+                    </div>
+                    <div class="android-body">
+                        <div class="android-core"></div>
+                        <div class="android-arms">
+                            <div class="android-arm android-arm-left"></div>
+                            <div class="android-arm android-arm-right"></div>
+                        </div>
+                    </div>
+                    <div class="android-legs">
+                        <div class="android-leg"></div>
+                        <div class="android-leg"></div>
+                    </div>
+                    <p class="android-name">K0D4-X</p>
+                </div>
+            </div>
+            <div>
+                <p class="who-quote">"Je ne code pas pour suivre les règles… je code pour les redéfinir."</p>
+                <div class="who-details" style="margin-top:2rem;">
+                    <p>Étudiant <strong>bac+3</strong>, je façonne des interfaces qui imposent une présence. Mon style : <strong>front-end/Back-End</strong> couplé à une <strong>expérience utilisateur</strong> qui marque les esprits.</p>
+                    <p>Ambitions : <strong>Réseau social pour otaku, TikTok, Projets dominateurs, et redéfinition du game digital.</strong></p>
+                    <div style="margin-top:1rem">
+                        <span class="tag">React</span>
+                        <span class="tag">UI/UX</span>
+                        <span class="tag">Animation</span>
+                        <span class="tag">Storytelling</span>
+                        <span class="tag">Three.js</span>
+                        <span class="tag">Firebase</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COMPÉTENCES -->
+    <section class="section" id="skills">
+        <div class="section-header">
+            <p class="section-label" data-lang-fr="PUISSANCE" data-lang-en="POWER">PUISSANCE</p>
+            <h2 class="section-title">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor" style="margin-right: 0.5rem;">
+                    <path d="M9 17H7v-7h2m4 0h-2V7h2m4 10h-2v-4h2m2-8h-2v2h2m1-6H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"/>
+                </svg>
+                Compétences
+            </h2>
+        </div>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <div class="skill-name">React / Next.js</div>
+                <div class="skill-bar"><div class="skill-fill" data-width="67%"></div></div>
+                <div class="skill-percent">67%</div>
+            </div>
+            <div class="skill-card">
+                <div class="skill-name">UI/UX Design</div>
+                <div class="skill-bar"><div class="skill-fill" data-width="75%"></div></div>
+                <div class="skill-percent">75%</div>
+            </div>
+            <div class="skill-card">
+                <div class="skill-name">Animation (GSAP/Three.js)</div>
+                <div class="skill-bar"><div class="skill-fill" data-width="50%"></div></div>
+                <div class="skill-percent">50%</div>
+            </div>
+            <div class="skill-card">
+                <div class="skill-name">Node.js / Firebase</div>
+                <div class="skill-bar"><div class="skill-fill" data-width="70%"></div></div>
+                <div class="skill-percent">70%</div>
+            </div>
+            <div class="skill-card">
+                <div class="skill-name">TikTok / Création</div>
+                <div class="skill-bar"><div class="skill-fill" data-width="30%"></div></div>
+                <div class="skill-percent">30%</div>
+            </div>
+            <div class="skill-card">
+                <div class="skill-name">Storytelling Digital</div>
+                <div class="skill-bar"><div class="skill-fill" data-width="62%"></div></div>
+                <div class="skill-percent">62%</div>
+            </div>
+        </div>
+        <!-- Radar Chart -->
+        <div style="text-align:center;margin-top:3rem;">
+            <canvas id="radarChart" width="300" height="300" style="max-width:300px;"></canvas>
+        </div>
+    </section>
+
+    <!-- PROJETS -->
+    <section class="section" id="projects">
+        <div class="section-header">
+            <p class="section-label" data-lang-fr="ARSENAL" data-lang-en="ARSENAL">ARSENAL</p>
+            <h2 class="section-title">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor" style="margin-right: 0.5rem;">
+                    <path d="M6.6 11h10.8l-.9-2h-9l-.9 2zm4.4-5.8h2.1l.7 1.8h-3.5l.7-1.8zm-1.1 0l-.7 1.8h-2.1l.7-1.8h2.1zm4.2 0l.7 1.8h2.1l-.7-1.8h-2.1zm-6.3 0l-.7 1.8h-2.1l.7-1.8h2.1zm8.4 0l.7 1.8h2.1l-.7-1.8h-2.1z"/>
+                </svg>
+                Mes Armes
+            </h2>
+        </div>
+        <div class="project-filter">
+            <button class="filter-btn active" data-filter="all">TOUS</button>
+            <button class="filter-btn" data-filter="react">REACT</button>
+            <button class="filter-btn" data-filter="vue">VUE</button>
+            <button class="filter-btn" data-filter="three">THREE.JS</button>
+        </div>
+        <div class="projects-grid" id="projectsGrid">
+            <div class="project-card" data-category="react" data-project="1">
+                <div class="project-icon">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M13.5.67s.74 2.65.74 4.8c0 2.06-1.35 3.73-3.41 3.73-2.07 0-3.63-1.67-3.63-3.73l.03-.36C5.21 7.51 4 10.62 4 14c0 4.42 3.58 8 8 8s8-3.58 8-8c0-3.19-1.16-6.08-2.95-8.33zm-1.1 16.59c-1.43 0-2.64-.95-3.54-2.3-.3-.44-.68-.77-1.1-.95-.44-.2-.88-.13-1.2.2-.34.34-.34.88-.05 1.29.95 1.35 2.3 2.16 3.79 2.16 1.43 0 2.64-.95 3.54-2.3.3-.44.68-.77 1.1-.95.44-.2.88-.13 1.2.2.34.34.34.88.05 1.29-.95 1.35-2.3 2.16-3.79 2.16z"/>
+                    </svg>
+                </div>
+                <h3>Interface clinique intelligente</h3>
+                <p>Dashboard prédictif qui fluidifie le suivi patient. Réduction de 60% du temps de consultation.</p>
+                <div class="tech-stack">
+                    <span class="tech">React</span><span class="tech">Node.js</span><span class="tech">IA</span>
+                </div>
+            </div>
+            <div class="project-card" data-category="three" data-project="2">
+                <div class="project-icon">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M7 2v11h3v9l7-12h-4l4-8z"/>
+                    </svg>
+                </div>
+                <h3>Système UX immersif</h3>
+                <p>Expérience narrative où chaque scroll raconte une histoire. -35% d'abandon utilisateur.</p>
+                <div class="tech-stack">
+                    <span class="tech">Three.js</span><span class="tech">GSAP</span>
+                </div>
+            </div>
+            <div class="project-card" data-category="vue" data-project="3">
+                <div class="project-icon">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M5 16L3 5c0-1.1.9-2 2-2h14c1.1 0 2 .9 2 2l-2 11H5zM12 4c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm7 5H5l1.5 9h11L19 9z"/>
+                    </svg>
+                </div>
+                <h3>Mini réseau social</h3>
+                <p>Connexion par passions, non par algorithmes. Design sombre et exclusif.</p>
+                <div class="tech-stack">
+                    <span class="tech">Vue.js</span><span class="tech">Firebase</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CASES -->
+    <section class="section" id="cases">
+        <div class="section-header">
+            <p class="section-label" data-lang-fr="CAS CLIENT" data-lang-en="CASE STUDY">CAS CLIENT</p>
+            <h2 class="section-title">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor" style="margin-right: 0.5rem;">
+                    <path d="M10 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.89 2 1.99 2H16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z"/>
+                </svg>
+                Études de cas
+            </h2>
+        </div>
+        <div class="case-grid">
+            <div class="case-card" data-case="1">
+                <div class="case-icon">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0L19.2 12l-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/>
+                    </svg>
+                </div>
+                <h3>Refonte UX pour une app santé</h3>
+                <p>Interface fluide, onboarding amélioré, +32% de rétention utilisateur.</p>
+                <span class="case-tag">React / Figma</span>
+            </div>
+            <div class="case-card" data-case="2">
+                <div class="case-icon">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M7 2v11h3v9l7-12h-4l4-8z"/>
+                    </svg>
+                </div>
+                <h3>Site e-commerce premium</h3>
+                <p>Design scannable, tunnel de conversion optimisé, +18% de panier moyen.</p>
+                <span class="case-tag">Vue / Stripe</span>
+            </div>
+            <div class="case-card" data-case="3">
+                <div class="case-icon">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z"/>
+                    </svg>
+                </div>
+                <h3>Landing viral pour créateur</h3>
+                <p>Landing épique, storytelling immersif et authentique pour TikTok.</p>
+                <span class="case-tag">Animation / UX</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- LIGHTBOX -->
+    <div class="lightbox" id="lightbox">
+        <div class="lightbox-content" id="lightboxContent"></div>
+        <div class="lightbox-close" id="lightboxClose">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+            </svg>
+        </div>
+    </div>
+
+    <!-- BLOG -->
+    <section class="section" id="blog">
+        <div class="section-header">
+            <p class="section-label" data-lang-fr="SAVOIR" data-lang-en="KNOWLEDGE">SAVOIR</p>
+            <h2 class="section-title">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor" style="margin-right: 0.5rem;">
+                    <path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-1 9H9V9h10v2zm-4 4H9v-2h6v2zm4-8H9V5h10v2z"/>
+                </svg>
+                Blog Tech
+            </h2>
+        </div>
+        <div class="blog-actions">
+            <div class="blog-filters">
+                <button class="blog-filter-btn active" data-filter="all">Tous</button>
+                <button class="blog-filter-btn" data-filter="react">React</button>
+                <button class="blog-filter-btn" data-filter="tiktok">TikTok</button>
+                <button class="blog-filter-btn" data-filter="ia">IA</button>
+                <button class="blog-filter-btn" data-filter="uiux">UI/UX</button>
+                <button class="blog-filter-btn" data-filter="freelance">Freelance</button>
+                <button class="blog-filter-btn" data-filter="productivity">Prod.</button>
+            </div>
+            <input type="search" id="blogSearch" class="blog-search" placeholder="Rechercher un article..." />
+        </div>
+        <div class="blog-grid" id="blogGrid">
+            <div class="blog-card" data-blog="1" data-category="react">
+                <div class="blog-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/>
+                    </svg>
+                </div>
+                <div class="blog-badge">AFFILIATION</div>
+                <h3>Les 7 patterns React que 99% des devs ignorent</h3>
+                <p>Compound Components, Custom Hooks, Render Props... Les patterns avancés qui font la différence.</p>
+                <div class="blog-meta">
+                    <span class="blog-category">React Avancé</span>
+                    <span class="blog-read">5 min</span>
+                </div>
+            </div>
+            <div class="blog-card" data-blog="2" data-category="tiktok">
+                <div class="blog-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                    </svg>
+                </div>
+                <div class="blog-badge">AFFILIATION</div>
+                <h3>Comment j'ai percé sur TikTok en parlant de code</h3>
+                <p>Stratégie virale, hook 3 secondes, transformation avant/après. La formule qui écrase.</p>
+                <div class="blog-meta">
+                    <span class="blog-category">TikTok Dev</span>
+                    <span class="blog-read">4 min</span>
+                </div>
+            </div>
+            <div class="blog-card" data-blog="3" data-category="ia">
+                <div class="blog-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2.25c0 0-.74.59-.74 1.76 0 1.02.7 1.84 1.74 1.84s1.74-.82 1.74-1.84c0-1.17-.74-1.76-.74-1.76zM9.5 7.5c0-.28.22-.5.5-.5s.5.22.5.5v2.5c0 .28-.22.5-.5.5s-.5-.22-.5-.5V7.5zm5 0c0-.28.22-.5.5-.5s.5.22.5.5v2.5c0 .28-.22.5-.5.5s-.5-.22-.5-.5V7.5zM12 14c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm-6.31-2.16l-1.42 1.41c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0l1.42-1.41c.39-.39.39-1.02 0-1.41-.38-.39-1.02-.39-1.41 0zm10.62 0c-.39-.39-1.02-.39-1.41 0-.39.39-.39 1.02 0 1.41l1.42 1.41c.39.39 1.02.39 1.41 0 .39-.39.39-1.02 0-1.41l-1.42-1.41zM20 12c0 2.76-2.24 5-5 5s-5-2.24-5-5 2.24-5 5-5 5 2.24 5 5z"/>
+                    </svg>
+                </div>
+                <div class="blog-badge">SPONSORISÉ</div>
+                <h3>Intègre l'IA dans tes apps sans être un génie</h3>
+                <p>OpenAI, Stable Diffusion, Whisper. L'IA accessible pour les devs à temps partiel.</p>
+                <div class="blog-meta">
+                    <span class="blog-category">IA Pratique</span>
+                    <span class="blog-read">7 min</span>
+                </div>
+            </div>
+            <div class="blog-card" data-blog="4" data-category="uiux">
+                <div class="blog-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9c.83 0 1.5-.67 1.5-1.5 0-.39-.15-.74-.39-1.01-.23-.26-.38-.61-.38-.99 0-.83.67-1.5 1.5-1.5H16c2.76 0 5-2.24 5-5 0-4.42-4.03-8-9-8zm-5.5 9c-.83 0-1.5-.67-1.5-1.5S5.67 9 6.5 9 8 9.67 8 10.5 7.33 12 6.5 12zm3-4C8.67 8 8 7.33 8 6.5S8.67 5 9.5 5s1.5.67 1.5 1.5S10.33 8 9.5 8zm5 0c-.83 0-1.5-.67-1.5-1.5S13.67 5 14.5 5s1.5.67 1.5 1.5S15.33 8 14.5 8zm3 4c-.83 0-1.5-.67-1.5-1.5S16.67 9 17.5 9s1.5.67 1.5 1.5S18.33 12 17.5 12z"/>
+                    </svg>
+                </div>
+                <div class="blog-badge">GRATUIT</div>
+                <h3>Pourquoi ton UI est nulle : les 5 erreurs qui tuent</h3>
+                <p>Contraste, hiérarchie, animations, mobile, feedback. Les fondamentaux qui changent tout.</p>
+                <div class="blog-meta">
+                    <span class="blog-category">UI/UX Choc</span>
+                    <span class="blog-read">6 min</span>
+                </div>
+            </div>
+            <div class="blog-card" data-blog="5" data-category="freelance">
+                <div class="blog-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/>
+                    </svg>
+                </div>
+                <div class="blog-badge">SPONSORISÉ</div>
+                <h3>De 0 à 50.000Fc/mois en freelance : ma méthode</h3>
+                <p>Plan mois par mois, templates, scripts de négociation. La playbook complète du freelancer.</p>
+                <div class="blog-meta">
+                    <span class="blog-category">Freelance Killer</span>
+                    <span class="blog-read">8 min</span>
+                </div>
+            </div>
+            <div class="blog-card" data-blog="6" data-category="productivity">
+                <div class="blog-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M7 2v11h3v9l7-12h-4l4-8z"/>
+                    </svg>
+                </div>
+                <div class="blog-badge">GRATUIT</div>
+                <h3>Ma routine de dev qui écrase tout : 4h de deep work</h3>
+                <p>Méthode deep work, pomodoro inversé, setup complet. Comment je reste productif 80%.</p>
+                <div class="blog-meta">
+                    <span class="blog-category">Productivité</span>
+                    <span class="blog-read">5 min</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="section" id="testimonials">
+        <div class="section-header">
+            <p class="section-label" data-lang-fr="PREUVE" data-lang-en="PROOF">PREUVE</p>
+            <h2 class="section-title">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor" style="margin-right: 0.5rem;">
+                    <path d="M9 11H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm2-7h-1V2h-2v2H8V2H6v2H5c-1.1 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z"/>
+                </svg>
+                Témoignages & partenaires
+            </h2>
+        </div>
+        <div class="testimonial-grid">
+            <div class="testimonial-card">
+                <p>"Holsen a livré un design Horizon-Ready en moins de 2 semaines. Impact immédiat sur les conversions."</p>
+                <span>— Mpela Loko, CM d'une scale-up</span>
+            </div>
+            <div class="testimonial-card">
+                <p>"Le projet TikTok a explosé après son UX stratégique. Le storytelling est juste parfait."</p>
+                <span>— Praise Mazowa, Brand Manager</span>
+            </div>
+            <div class="testimonial-card">
+                <p>"Nouveau MVP livré rapidement, fiabilité max et esthétique premium. Recommande à 100%."</p>
+                <span>— Bute Iwelia, Fondatrice</span>
+            </div>
+        </div>
+        <div class="partner-logos">
+            <span>Notion</span>
+            <span>Stripe</span>
+            <span>Figma</span>
+            <span>LemonSqueezy</span>
+            <span>OpenAI</span>
+        </div>
+    </section>
+
+    <!-- OUTILS -->
+    <section class="section" id="tools">
+        <div class="section-header">
+            <p class="section-label" data-lang-fr="RESSOURCES" data-lang-en="RESOURCES">RESSOURCES</p>
+            <h2 class="section-title">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor" style="margin-right: 0.5rem;">
+                    <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+                </svg>
+                Outils & Calculateurs
+            </h2>
+        </div>
+        <div class="tools-grid">
+            <div class="tool-card">
+                <div class="tool-icon">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M20 7h-4V5l-2-2h-4L8 5v2H4c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V9c0-1.1-.9-2-2-2zM10 5h4v2h-4V5zM4 9h16v10H4V9zm8 2.75l-6 2.25v1.5l6-2.25V15l6 2.25v-1.5L12 13.25V11.75z"/>
+                    </svg>
+                </div>
+                <h3>Calculateur Freelance</h3>
+                <p>Calcule tes revenus réels après charges</p>
+                <div class="calculator">
+                    <div class="calc-input">
+                        <label>Taux journalier ($)</label>
+                        <input type="number" id="calcRate" placeholder="600" value="600" min="0">
+                    </div>
+                    <div class="calc-input">
+                        <label>Jours travaillés/mois</label>
+                        <input type="number" id="calcDays" placeholder="20" value="20" min="0">
+                    </div>
+                    <div class="calc-input">
+                        <label>Charges (%)</label>
+                        <input type="number" id="calcExpenses" placeholder="30" value="30" min="0" max="100">
+                    </div>
+                    <div class="calc-result">
+                        <p style="color:var(--text-secondary);margin-bottom:0.5rem;">Revenu net/mois</p>
+                        <p id="calcResult" style="font-size:2.2rem;color:var(--gold-light);font-weight:900;font-family:'Orbitron',sans-serif;letter-spacing:2px;">8 400 $</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TIKTOK -->
+    <section class="section" id="tiktok">
+        <div class="section-header">
+            <p class="section-label" data-lang-fr="CONTENU" data-lang-en="CONTENT">CONTENU</p>
+            <h2 class="section-title">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor" style="margin-right: 0.5rem;">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                </svg>
+                Hol-Dev vs le monde
+            </h2>
+        </div>
+        <div class="tiktok-block">
+            <p style="font-size:1.3rem;margin-bottom:1rem;">Développeur + Créateur = <strong>combo rare.</strong></p>
+            <div style="text-align:center;margin:1.5rem 0;">
+                <span class="follower-count" id="followerCount">0</span>
+                <p style="color:var(--text-secondary)">followers</p>
+            </div>
+            <div class="tiktok-grid">
+                <div class="tiktok-item">
+                    <span class="icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M6.6 11h10.8l-.9-2h-9l-.9 2zm-1.1 2l.9 2h9l.9-2H5.5zm-1.4-4h13.8l-.9-2H4.9l-.9 2zm15.4-4h-17l-1 3h19l-1-3zm-2.4 8l.9 2H4.9l.9-2H17.5z"/>
+                        </svg>
+                    </span>
+                    <strong>Duels de code</strong>
+                    <p style="color:var(--text-secondary);font-size:0.9rem;">Storytelling & compétition</p>
+                </div>
+                <div class="tiktok-item">
+                    <span class="icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/>
+                        </svg>
+                    </span>
+                    <strong>Scripts exclusifs</strong>
+                    <p style="color:var(--text-secondary);font-size:0.9rem;">Aura vs Standard</p>
+                </div>
+                <div class="tiktok-item">
+                    <span class="icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <circle cx="12" cy="12" r="3.2"/>
+                            <path d="M9 2L7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-3.17L15 2H9zm3 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z"/>
+                        </svg>
+                    </span>
+                    <strong>Front-end spectacle</strong>
+                    <p style="color:var(--text-secondary);font-size:0.9rem;">Le code devient viral</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section" id="contact">
+        <div class="section-header">
+            <p class="section-label" data-lang-fr="INVOCATION" data-lang-en="SUMMON">INVOCATION</p>
+            <h2 class="section-title">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor" style="margin-right: 0.5rem;">
+                    <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+                </svg>
+                Invoquer Le Sama
+            </h2>
+        </div>
+        <div class="contact-block">
+            <p style="font-size:1.4rem;margin-bottom:1.5rem;">"Si tu veux travailler avec Holsen<br><strong>Prouve que tu es prêt.</strong>"</p>
+            <div class="summon-circle">
+                <span class="summon-inner">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M7 2v11h3v9l7-12h-4l4-8z"/>
+                    </svg>
+                </span>
+            </div>
+            <form class="contact-form" id="contactForm">
+                <input type="text" placeholder="Ton nom" required>
+                <input type="email" placeholder="Ton email" required>
+                <textarea placeholder="Pourquoi veux-tu m'invoquer ?" required></textarea>
+                <button type="submit" class="btn btn-primary">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="margin-right: 0.5rem;">
+                        <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+                    </svg>
+                    Lancer l'invocation
+                </button>
+            </form>
+            <div class="contact-links">
+                <a href="mailto:holsendbika@gmail.com" class="contact-link" title="Email">
+                    <span class="contact-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                        </svg>
+                    </span>
+                    <span class="contact-label">Email</span>
+                </a>
+                <a href="https://facebook.com/holsen_sama" target="_blank" class="contact-link" title="Facebook">
+                    <span class="contact-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                        </svg>
+                    </span>
+                    <span class="contact-label">Facebook</span>
+                </a>
+                <a href="https://t.me/holsen_sama" target="_blank" class="contact-link" title="Telegram">
+                    <span class="contact-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+                        </svg>
+                    </span>
+                    <span class="contact-label">Telegram</span>
+                </a>
+                <a href="https://wa.me/243896643725" target="_blank" class="contact-link" title="WhatsApp">
+                    <span class="contact-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+                        </svg>
+                    </span>
+                    <span class="contact-label">WhatsApp</span>
+                </a>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer class="footer">
+    <div class="footer-content">
+        <div class="footer-main">
+            <p>© Holsen-sama · Présence imposée · K0D4-X actif</p>
+        </div>
+        <div class="footer-contact">
+            <a href="mailto:holsen@aura.me" title="Email">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                </svg>
+            </a>
+            <a href="https://facebook.com/holsen_bika" target="_blank" title="Facebook">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                </svg>
+            </a>
+            <a href="https://t.me/holsen_bika" target="_blank" title="Telegram">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+                </svg>
+            </a>
+            <a href="https://wa.me/" target="_blank" title="WhatsApp">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+                </svg>
+            </a>
+        </div>
+    </div>
+</footer>
+<script src="script.js"></script>
+</body>
+</html> 
